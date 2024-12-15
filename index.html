@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Time to 02:00</h1>
+    <div id="time"></div>
+    
+    <script>
+        (() => {
+            const getTime = (hours, minutes) => hours * 60 + minutes;
+            const now = new Date();
+            const timeToMidnight = getTime(24, 0) - getTime(now.getHours(), now.getMinutes());
+            const timeToTwoOclockFromMidnight = getTime(2, 0, 0);
+
+            const timeToTwoOclock = timeToMidnight + timeToTwoOclockFromMidnight;
+
+            const hours = Math.floor(timeToTwoOclock / 60);
+            const minutes = timeToTwoOclock % 60;
+
+            const timeDiv = document.getElementById('time');
+            timeDiv.innerHTML = `${hours}:${minutes}`;
+        })();
+    </script>
+</body>
+</html>
