@@ -1,28 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Home</title>
-    <meta name="viewport" content="width=device-width">
-</head>
-<body>
-    <h1>Time to 02:00</h1>
-    <div id="time"></div>
-    
-    <script>
-        (() => {
-            const getTime = (hours, minutes) => hours * 60 + minutes;
-            const now = new Date();
-            const timeToMidnight = getTime(24, 0) - getTime(now.getHours(), now.getMinutes());
-            const timeToTwoOclockFromMidnight = getTime(2, 0, 0);
+    <head>
+        <title>Time-two</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+            }
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
 
-            const timeToTwoOclock = timeToMidnight + timeToTwoOclockFromMidnight;
+                .card {
+                    .title {
+                        font-size: 1.2rem;
+                        font-style: italic;
+                    }
+                    .content {
+                        font-size: 8rem;
+                    }
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="card">
+                <div class="title">Time to 02:00:</div>
+                <div class="content" id="time"></div>
+            </div>
+        </div>
 
-            const hours = Math.floor(timeToTwoOclock / 60);
-            const minutes = timeToTwoOclock % 60;
+        <script>
+            (() => {
+                const getTime = (hours, minutes) => hours * 60 + minutes;
+                const now = new Date();
+                const timeToMidnight = getTime(24, 0) - getTime(now.getHours(), now.getMinutes());
+                const timeToTwoOclockFromMidnight = getTime(2, 0, 0);
 
-            const timeDiv = document.getElementById('time');
-            timeDiv.innerHTML = `${hours}:${minutes}`;
-        })();
-    </script>
-</body>
+                const timeToTwoOclock = timeToMidnight + timeToTwoOclockFromMidnight;
+
+                const hours = Math.floor(timeToTwoOclock / 60);
+                const minutes = timeToTwoOclock % 60;
+
+                const timeDiv = document.getElementById('time');
+                timeDiv.innerHTML = `${hours}:${minutes}`;
+            })();
+        </script>
+    </body>
 </html>
